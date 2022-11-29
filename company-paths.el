@@ -59,6 +59,11 @@
   :type 'string
   :group 'company-paths)
 
+(defcustom company-paths-continue-completing nil
+  "Non-nil to continue completion after every completion."
+  :type 'boolean
+  :group 'company-paths)
+
 ;;
 ;; (@* "Core" )
 ;;
@@ -109,9 +114,9 @@
     (forward-char (length arg)))
   ;; Respect variable `company-files-chop-trailing-slash'
   (funcall #'company-files--post-completion arg)
-  (when (company-files--trailing-slash-p arg)
-    ;; TODO: ..
-    ))
+  (when (and company-paths-continue-completing
+             (not company-files-chop-trailing-slash))
+    (run-with-idle-timer 0 nil #'company-manual-begin)))
 
 ;;;###autoload
 (defun company-paths (command &optional arg &rest ignored)
