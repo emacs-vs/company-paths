@@ -6,14 +6,19 @@
 
 [![CI](https://github.com/emacs-vs/company-paths/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-vs/company-paths/actions/workflows/test.yml)
 
-## 🔨 Usage
+## 💾 Quickstart
 
 ```elisp
-(use-package company-paths
-  :ensure t
-  :hook (csharp-mode . (lambda ()
-                         (add-to-list 'company-backends 'company-meta-net))))
+(require 'company-paths)
+(add-to-list 'company-backends 'company-paths)
 ```
+
+## 🔨 Configurations
+
+* company-paths-complete-with-children - `nil`
+* `company-paths-use-full-path` - `nil`
+* `company-paths-annotation-folder` - `"📁"`
+* `company-paths-annotation-file` - `"🗎"`
 
 ## Contribute
 
