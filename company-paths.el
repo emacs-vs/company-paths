@@ -65,9 +65,8 @@
 
 (defun company-paths--complete (prefix)
   "Pretty much the same with `company-files--complete'."
-  (let* ((input (company-files--grab-existing-name))
-         (dir (file-name-directory input))
-         (file prefix)
+  (let* ((dir (file-name-directory prefix))
+         (file (file-name-nondirectory prefix))
          (key (list file
                     (expand-file-name dir)
                     (nth 5 (file-attributes dir))))
@@ -91,7 +90,7 @@
                                        directories))))
         (setq company-files--completion-cache
               (cons key (append candidates children)))))
-    (let ((candidates (all-completions prefix
+    (let ((candidates (all-completions file
                                        (cdr company-files--completion-cache))))
       (if company-paths-use-full-path candidates
         (mapcar (lambda (path) (string-replace dir "" path)) candidates)))))
@@ -103,6 +102,11 @@
 
 (defun company-paths--post-completion (arg)
   "Post-completion for ARG."
+  ;; Insert prefix
+  (let ((inhibit-redisplay t))
+    (forward-char (- 0 (length arg)))
+    (insert (nth 1 (car company-files--completion-cache)))
+    (forward-char (length arg)))
   ;; Respect variable `company-files-chop-trailing-slash'
   (funcall #'company-files--post-completion arg)
   (when (company-files--trailing-slash-p arg)
@@ -118,8 +122,7 @@ Arguments COMMAND, ARG and IGNORED are standard arguments from `company-mode`."
   (cl-case command
     (interactive (company-begin-backend 'company-paths))
     (annotation (company-paths--annotation arg))
-    (prefix (when-let ((path (company-files--grab-existing-name)))
-              (file-name-nondirectory path)))
+    (prefix (company-files--grab-existing-name))
     (candidates (company-paths--complete arg))
     (location (cons (dired-noselect
                      (file-name-directory (directory-file-name arg)))
