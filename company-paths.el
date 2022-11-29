@@ -6,7 +6,7 @@
 ;; Maintainer: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; URL: https://github.com/emacs-vs/company-paths
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "27.1") (company "0.8.12"))
+;; Package-Requires: ((emacs "28.1") (company "0.8.12"))
 ;; Keywords: convenience
 
 ;; This file is not part of GNU Emacs.
@@ -64,7 +64,7 @@
 ;;
 
 (defun company-paths--complete (prefix)
-  "Pretty much the same with `company-files--complete'."
+  "Modifed version of `company-files--complete' function."
   (let* ((dir (file-name-directory prefix))
          (file (file-name-nondirectory prefix))
          (key (list file

@@ -11,7 +11,7 @@
 (source "jcs-elpa")
 (source "melpa")
 
-(depends-on "emacs" "27.1")
+(depends-on "emacs" "28.1")
 (depends-on "company")
 
 (development
