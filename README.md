@@ -15,10 +15,11 @@
 
 ## 🔨 Configurations
 
-* company-paths-complete-with-children - `nil`
-* `company-paths-use-full-path` - `nil`
-* `company-paths-annotation-folder` - `"📁"`
-* `company-paths-annotation-file` - `"🗎"`
+* company-paths-complete-with-children - Non-nil to include children in the completion. (Default: `nil`)
+* `company-paths-use-full-path` - Non-nil to include children in the completion. (Default: `nil`)
+* `company-paths-annotation-folder` - Annotation string to indicate folder. (Default: `"📁"`)
+* `company-paths-annotation-file` - Annotation string to indicate file. (Default: `"🗎"`)
+* `company-paths-continue-completing` - Non-nil to continue completion after every completion
 
 ## Contribute
 
