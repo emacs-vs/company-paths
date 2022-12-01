@@ -74,7 +74,8 @@
          (file (file-name-nondirectory prefix))
          (key (list file
                     (expand-file-name dir)
-                    (nth 5 (file-attributes dir))))
+                    (nth 5 (file-attributes dir))
+                    dir))  ; for post-completion
          (completion-ignore-case read-file-name-completion-ignore-case))
     (unless (company-file--keys-match-p key (car company-files--completion-cache))
       (let* ((candidates (mapcar (if company-paths-use-full-path
@@ -110,7 +111,7 @@
   ;; Insert prefix
   (let ((inhibit-redisplay t))
     (forward-char (- 0 (length arg)))
-    (insert (nth 1 (car company-files--completion-cache)))
+    (insert (nth 3 (car company-files--completion-cache)))
     (forward-char (length arg)))
   ;; Respect variable `company-files-chop-trailing-slash'
   (funcall #'company-files--post-completion arg)
