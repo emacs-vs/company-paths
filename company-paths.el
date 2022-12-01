@@ -116,7 +116,8 @@
   ;; Respect variable `company-files-chop-trailing-slash'
   (funcall #'company-files--post-completion arg)
   (when (and company-paths-continue-completing
-             (not company-files-chop-trailing-slash))
+             (not company-files-chop-trailing-slash)
+             (company-files--trailing-slash-p arg))  ; only for directory
     (run-with-idle-timer 0 nil #'company-manual-begin)))
 
 ;;;###autoload
