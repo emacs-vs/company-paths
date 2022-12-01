@@ -6,7 +6,9 @@
 
 [![CI](https://github.com/emacs-vs/company-paths/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-vs/company-paths/actions/workflows/test.yml)
 
-<img alt="screenshot" src="./etc/demo.png"/>
+<p align="center">
+<img alt="screenshot" src="./etc/demo.png" width="60%"/>
+</p>
 
 ## 💾 Quickstart
 
