@@ -6,6 +6,8 @@
 
 [![CI](https://github.com/emacs-vs/company-paths/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-vs/company-paths/actions/workflows/test.yml)
 
+<img alt="screenshot" src="./etc/demo.png"/>
+
 ## 💾 Quickstart
 
 ```elisp
@@ -15,7 +17,7 @@
 
 ## 🔨 Configurations
 
-* company-paths-complete-with-children - Non-nil to include children in the completion. (Default: `nil`)
+* `company-paths-complete-with-children` - Non-nil to include children in the completion. (Default: `nil`)
 * `company-paths-use-full-path` - Non-nil to include children in the completion. (Default: `nil`)
 * `company-paths-annotation-folder` - Annotation string to indicate folder. (Default: `"📁"`)
 * `company-paths-annotation-file` - Annotation string to indicate file. (Default: `"🗎"`)
